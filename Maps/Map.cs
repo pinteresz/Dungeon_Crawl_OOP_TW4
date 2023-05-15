@@ -30,13 +30,20 @@ public class Map
 
         UserControlledObject = new Player(_mapSurface.Surface.Area.Center, _mapSurface);
 
-        // Create 5 treasure tiles and 5 monster tiles
-        for (int i = 0; i < 5; i++)
+        // Create walls and 5 treasure tiles and 5 monster tiles
+
+        for (int i = 0; i < 3; i++)
+        {
+            CreateWall();
+        }
+
+            for (int i = 0; i < 5; i++)
         {
             CreateTreasure();
             CreateMonster();
-            CreateWall();
         }
+
+        
     }
 
     /// <summary>
@@ -121,8 +128,28 @@ public class Map
 
     private void CreateWall()
     {
+        var randomXPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Width);
+        var randomYPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Height);
+
+        for (int i = 0; i < _mapSurface.Surface.Height; i++)
+        {
+            if(i != randomYPosition)
+            {
+                Point randomPosition = new Point(randomXPosition, i);
+
+                // Check if any object is already positioned there, repeat the loop if found
+                bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+                if (foundObject) randomXPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Width);
+
+                // If the code reaches here, we've got a good position, create the game object.
+                GameObject wall = new Wall(randomPosition, _mapSurface);
+                _mapObjects.Add(wall);
+            }                    
+
+        }
+
         // Try 1000 times to get an empty map position
-        for (int i = 0; i < 1000; i++)
+       /* for (int i = 0; i < 1000; i++)
         {
             // Get a random position
             Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
@@ -136,6 +163,6 @@ public class Map
             GameObject wall = new Wall(randomPosition, _mapSurface);
             _mapObjects.Add(wall);
             break;
-        }
+        }*/
     }
 }
