@@ -128,7 +128,7 @@ public class Map
 
     private void CreateWall()
     {
-        var randomXPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Width);
+        var randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width - 5);
         var randomYPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Height);
 
         for (int i = 0; i < _mapSurface.Surface.Height; i++)
