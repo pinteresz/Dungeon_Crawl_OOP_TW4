@@ -35,6 +35,7 @@ public class Map
         {
             CreateTreasure();
             CreateMonster();
+            CreateWall();
         }
     }
 
@@ -114,6 +115,26 @@ public class Map
             // If the code reaches here, we've got a good position, create the game object.
             GameObject monster = new Monster(randomPosition, _mapSurface);
             _mapObjects.Add(monster);
+            break;
+        }
+    }
+
+    private void CreateWall()
+    {
+        // Try 1000 times to get an empty map position
+        for (int i = 0; i < 1000; i++)
+        {
+            // Get a random position
+            Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
+                Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
+
+            // Check if any object is already positioned there, repeat the loop if found
+            bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+            if (foundObject) continue;
+
+            // If the code reaches here, we've got a good position, create the game object.
+            GameObject wall = new Wall(randomPosition, _mapSurface);
+            _mapObjects.Add(wall);
             break;
         }
     }
