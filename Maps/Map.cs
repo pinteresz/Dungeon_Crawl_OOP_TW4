@@ -3,6 +3,7 @@ using SadConsole;
 using SadRogue.Primitives;
 using System.Collections.Generic;
 using System.Linq;
+using Console = System.Console;
 
 namespace DungeonCrawl.Maps;
 
@@ -48,6 +49,9 @@ public class Map
         
     }
 
+    
+    
+    
     /// <summary>
     /// Try to find a map object at that position.
     /// </summary>

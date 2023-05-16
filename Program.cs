@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Ui;
+﻿using DungeonCrawl.Tiles;
+using DungeonCrawl.Ui;
 using SadConsole;
 
 namespace DungeonCrawl;
@@ -34,6 +35,15 @@ public static class Program
     {
         Game.Instance.Screen = new RootScreen();
         Game.Instance.Screen.IsFocused = true;
+        
+        
+        var console = new Console(ViewPortWidth, ViewPortHeight);
+        console.IsFocused = false;
+        console.Cursor.IsVisible = false;
+        
+        
+        ((RootScreen)(Game.Instance.Screen)).Console = console;
+        Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).Console);
 
         // This is needed because we replaced the initial screen object with our own.
         Game.Instance.DestroyDefaultStartingConsole();

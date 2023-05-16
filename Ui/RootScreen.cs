@@ -11,14 +11,14 @@ namespace DungeonCrawl.Ui;
 public class RootScreen : ScreenObject
 {
     private Map _map;
-
+    public Console Console;
+    
     /// <summary>
     /// Constructor.
     /// </summary>
     public RootScreen()
     {
         _map = new Map(Game.Instance.ScreenCellsX, Game.Instance.ScreenCellsY - 5);
-
         Children.Add(_map.SurfaceObject);
     }
 

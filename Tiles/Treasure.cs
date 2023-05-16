@@ -1,5 +1,9 @@
-﻿using DungeonCrawl.Maps;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using DungeonCrawl.Maps;
+using DungeonCrawl.Ui;
 using SadConsole;
+using SadConsole.UI;
 using SadRogue.Primitives;
 using Console = System.Console;
 
@@ -30,6 +34,9 @@ public class Treasure : GameObject
         {
             map.RemoveMapObject(this);
             map.UserControlledObject.PickUpLoot(this);
+            
+            ((RootScreen)(Game.Instance.Screen)).Console.Clear();
+            ((RootScreen)(Game.Instance.Screen)).Console.Print(0,0,$"Picked up treasure");
             return true;
         }
 
