@@ -1,0 +1,32 @@
+﻿using DungeonCrawl.Maps;
+using SadConsole;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SadRogue.Primitives;
+
+
+namespace DungeonCrawl.Tiles
+{
+    public class Key : GameObject
+    {
+        public Key(Point position, IScreenSurface hostingSurface)
+       : base(new ColoredGlyph(Color.Orange, Color.Transparent, 213), position, hostingSurface)
+        {
+        }
+
+        protected override bool Touched(GameObject source, Map map)
+        {
+            // Is the player the one that touched us?
+            if (source == map.UserControlledObject)
+            {
+                map.RemoveMapObject(this);
+                return true;
+            }
+
+            return false;
+        }
+    }
+}
