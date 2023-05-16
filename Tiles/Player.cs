@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DungeonCrawl.Maps;
 using SadConsole;
 using SadRogue.Primitives;
 
@@ -15,20 +16,34 @@ public class Player : GameObject
     /// </summary>
     /// <param name="position"></param>
     /// <param name="hostingSurface"></param>
-    public Dictionary<GameObject, int> inventory;
+    public List<GameObject> inventoryTreasure;
+    public List<GameObject> inventoryKey;
+    public List<GameObject> inventoryBow;
 
     public Player(Point position, IScreenSurface hostingSurface)
         : base(new ColoredGlyph(Color.Green, Color.Transparent, 2), position, hostingSurface)
     {
-        inventory = new();
+        inventoryTreasure = new();
+        inventoryKey = new();
+        inventoryBow = new();
     }
 
     public void PickUpLoot(GameObject loot)
     {
-        if (inventory.ContainsKey(loot))
+        
+        if (loot is Key)
         {
-            inventory[loot]++;
+            inventoryKey.Add(loot);
         }
-        inventory.Add(loot, 1);
+        
+        if (loot is Treasure)
+        {
+            inventoryTreasure.Add(loot);
+        }
+        
+        if (loot is Bow)
+        {
+            inventoryBow.Add(loot);
+        }
     }
 }

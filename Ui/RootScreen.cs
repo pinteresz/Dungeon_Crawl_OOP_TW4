@@ -1,4 +1,7 @@
-﻿using DungeonCrawl.Maps;
+﻿using System.Linq;
+using System.Text;
+using DungeonCrawl.Maps;
+using DungeonCrawl.Tiles;
 using SadConsole;
 using SadConsole.Input;
 using SadRogue.Primitives;
@@ -12,6 +15,9 @@ public class RootScreen : ScreenObject
 {
     private Map _map;
     public Console Console;
+    public Console InventoryTreasure;
+    public Console InventoryKey;
+    public Console InventoryBow;
     
     /// <summary>
     /// Constructor.
@@ -52,6 +58,25 @@ public class RootScreen : ScreenObject
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Right, _map);
             handled = true;
         }
+
+        if (keyboard.IsKeyPressed(Keys.B) || keyboard.IsKeyPressed(Keys.I))
+        { 
+            if (_map.UserControlledObject.inventoryTreasure.Any())
+            {
+                ((RootScreen)(Game.Instance.Screen)).InventoryTreasure.Print(0, Game.Instance.ScreenCellsY - 3, $"Treasures: {_map.UserControlledObject.inventoryTreasure.Count()}");
+            }
+
+            if (_map.UserControlledObject.inventoryKey.Any())
+            {
+                ((RootScreen)(Game.Instance.Screen)).InventoryKey.Print(0,Game.Instance.ScreenCellsY-2, $"Keys: {_map.UserControlledObject.inventoryKey.Count()}");
+            }
+
+            if (_map.UserControlledObject.inventoryBow.Any())
+            {
+                ((RootScreen)(Game.Instance.Screen)).InventoryBow.Print(0,Game.Instance.ScreenCellsY-1, $"Bow: {_map.UserControlledObject.inventoryBow.Count()}");
+            }
+        }
+        
 
         return handled;
     }

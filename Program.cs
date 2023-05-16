@@ -41,9 +41,23 @@ public static class Program
         console.IsFocused = false;
         console.Cursor.IsVisible = false;
         
-        
         ((RootScreen)(Game.Instance.Screen)).Console = console;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).Console);
+        
+        
+        var consoleInventory = new Console(ViewPortWidth, ViewPortHeight);
+        console.IsFocused = false;
+        console.Cursor.IsVisible = false;
+        
+        ((RootScreen)(Game.Instance.Screen)).InventoryTreasure = consoleInventory;
+        Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
+        
+        ((RootScreen)(Game.Instance.Screen)).InventoryKey = consoleInventory;
+        Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
+        
+        ((RootScreen)(Game.Instance.Screen)).InventoryBow = consoleInventory;
+        Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
+        
 
         // This is needed because we replaced the initial screen object with our own.
         Game.Instance.DestroyDefaultStartingConsole();
