@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SadRogue.Primitives;
+using Console = System.Console;
 
 
 namespace DungeonCrawl.Tiles
@@ -23,6 +24,7 @@ namespace DungeonCrawl.Tiles
             if (source == map.UserControlledObject)
             {
                 map.RemoveMapObject(this);
+                map.UserControlledObject.PickUpLoot(this);
                 return true;
             }
 

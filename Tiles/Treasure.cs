@@ -1,6 +1,7 @@
 ﻿using DungeonCrawl.Maps;
 using SadConsole;
 using SadRogue.Primitives;
+using Console = System.Console;
 
 namespace DungeonCrawl.Tiles;
 
@@ -28,6 +29,7 @@ public class Treasure : GameObject
         if (source == map.UserControlledObject)
         {
             map.RemoveMapObject(this);
+            map.UserControlledObject.PickUpLoot(this);
             return true;
         }
 

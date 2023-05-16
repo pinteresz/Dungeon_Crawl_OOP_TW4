@@ -29,7 +29,7 @@ public class Map
         _mapSurface.UseMouse = false;
 
         UserControlledObject = new Player(_mapSurface.Surface.Area.Center, _mapSurface);
-
+        
         // Create walls and 5 treasure tiles and 5 monster tiles
 
         for (int i = 0; i < 3; i++)
@@ -160,7 +160,7 @@ public class Map
                 Point randomPosition = new Point(randomXPosition, i);
 
                 // Check if any object is already positioned there, repeat the loop if found
-                bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+                bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition || obj.Position.X == randomPosition.X+1 || obj.Position.X == randomPosition.X-1);
                 if (foundObject) randomXPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Width);
 
                 // If the code reaches here, we've got a good position, create the game object.
