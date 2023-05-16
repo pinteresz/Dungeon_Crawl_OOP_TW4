@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonCrawl.Ui;
 using SadRogue.Primitives;
 using Console = System.Console;
 
@@ -25,6 +26,10 @@ namespace DungeonCrawl.Tiles
             {
                 map.RemoveMapObject(this);
                 map.UserControlledObject.PickUpLoot(this);
+                
+            
+                ((RootScreen)(Game.Instance.Screen)).Console.Clear();
+                ((RootScreen)(Game.Instance.Screen)).Console.Print(0,0,$"You picked up a key!");
                 return true;
             }
 

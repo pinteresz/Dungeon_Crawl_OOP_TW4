@@ -36,7 +36,7 @@ public class Treasure : GameObject
             map.UserControlledObject.PickUpLoot(this);
             
             ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-            ((RootScreen)(Game.Instance.Screen)).Console.Print(0,0,$"Picked up treasure");
+            ((RootScreen)(Game.Instance.Screen)).Console.Print(0,0,$"You picked up a diamond!");
             return true;
         }
 

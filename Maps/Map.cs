@@ -32,11 +32,13 @@ public class Map
         UserControlledObject = new Player(_mapSurface.Surface.Area.Center, _mapSurface);
         
         // Create walls and 5 treasure tiles and 5 monster tiles
-
+        
+        
         for (int i = 0; i < 3; i++)
         {
             CreateWall();
         }
+        CreateBorder();
 
             for (int i = 0; i < 5; i++)
         {
@@ -155,9 +157,9 @@ public class Map
     private void CreateWall()
     {
         var randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width - 5);
-        var randomYPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Height);
+        var randomYPosition = Game.Instance.Random.Next(1, _mapSurface.Surface.Height - 1);
 
-        for (int i = 0; i < _mapSurface.Surface.Height; i++)
+        for (int i = 1; i < _mapSurface.Surface.Height-1; i++)
         {
             if(i != randomYPosition)
             {
@@ -165,7 +167,7 @@ public class Map
 
                 // Check if any object is already positioned there, repeat the loop if found
                 bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition || obj.Position.X == randomPosition.X+1 || obj.Position.X == randomPosition.X-1);
-                if (foundObject) randomXPosition = Game.Instance.Random.Next(0, _mapSurface.Surface.Width);
+                if (foundObject) randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width-5);
 
                 // If the code reaches here, we've got a good position, create the game object.
                 GameObject wall = new Wall(randomPosition, _mapSurface);
@@ -209,6 +211,49 @@ public class Map
             GameObject key = new Key(randomPosition, _mapSurface);
             _mapObjects.Add(key);
             break;
+        }
+    }
+
+    private void CreateBorder()
+    {
+        //left side
+        for (int i = 0; i < _mapSurface.Surface.Height; i++)
+        {
+            
+                Point randomPosition = new Point(0, i);
+                // If the code reaches here, we've got a good position, create the game object.
+                GameObject border = new Border(randomPosition, _mapSurface);
+                _mapObjects.Add(border);
+        }
+        
+        //right side
+        for (int i = 0; i < _mapSurface.Surface.Height; i++)
+        {
+            
+            Point randomPosition = new Point(_mapSurface.Surface.Width-1, i);
+            // If the code reaches here, we've got a good position, create the game object.
+            GameObject border = new Border(randomPosition, _mapSurface);
+            _mapObjects.Add(border);
+        }
+        
+        //top
+        for (int i = 0; i < _mapSurface.Surface.Width; i++)
+        {
+            
+            Point randomPosition = new Point(i, _mapSurface.Surface.Height-1);
+            // If the code reaches here, we've got a good position, create the game object.
+            GameObject border = new Border(randomPosition, _mapSurface);
+            _mapObjects.Add(border);
+        }
+        
+        //bottom
+        for (int i = 0; i < _mapSurface.Surface.Width; i++)
+        {
+            
+            Point randomPosition = new Point(i, 0);
+            // If the code reaches here, we've got a good position, create the game object.
+            GameObject border = new Border(randomPosition, _mapSurface);
+            _mapObjects.Add(border);
         }
     }
 }
