@@ -37,6 +37,10 @@ public class Treasure : GameObject
             
             ((RootScreen)(Game.Instance.Screen)).Console.Clear();
             ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You picked up a diamond!");
+            if (map.UserControlledObject.inventoryTreasure.Count == 5)
+            {
+                map.SummonBoss();
+            }
             return true;
         }
         

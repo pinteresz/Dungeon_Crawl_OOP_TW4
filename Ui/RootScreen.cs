@@ -22,6 +22,7 @@ public class RootScreen : ScreenObject
     public Console GameOver;
     
     
+    
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -72,7 +73,7 @@ public class RootScreen : ScreenObject
             sb.Append((char)254);
         }
         ((RootScreen)(Game.Instance.Screen)).HealthBar.Print(0,Game.Instance.ScreenCellsY-1, $"Player's health: {sb} {_map.UserControlledObject.Health}/10");
-
+        
         
         return handled;
     }

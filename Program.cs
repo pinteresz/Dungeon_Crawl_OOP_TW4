@@ -66,7 +66,7 @@ public static class Program
         
         ((RootScreen)(Game.Instance.Screen)).HealthBar = console1;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).HealthBar);
-        
+
         ((RootScreen)(Game.Instance.Screen)).GameOver = console2;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).GameOver);
         

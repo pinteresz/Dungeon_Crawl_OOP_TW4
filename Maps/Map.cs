@@ -38,6 +38,7 @@ public class Map
         for (int i = 0; i < 3; i++)
         {
             CreateWall();
+            CreateKey();
             CreateChest();
         }
         CreateBorder();
@@ -47,7 +48,7 @@ public class Map
             CreateTreasure();
             CreateMonsterSpider();
             CreateMonsterSnake();
-            CreateKey();
+            
         }
 
     }
@@ -287,6 +288,25 @@ public class Map
             // If the code reaches here, we've got a good position, create the game object.
             GameObject chest = new Chest(randomPosition, _mapSurface);
             _mapObjects.Add(chest);
+            break;
+        }
+    }
+    public void SummonBoss()
+    {
+        // Try 1000 times to get an empty map position
+        for (int i = 0; i < 1000; i++)
+        {
+            // Get a random position
+            Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
+                Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
+
+            // Check if any object is already positioned there, repeat the loop if found
+            bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+            if (foundObject) continue;
+
+            // If the code reaches here, we've got a good position, create the game object.
+            GameObject monsterBoss = new MonsterBoss(randomPosition, _mapSurface);
+            _mapObjects.Add(monsterBoss);
             break;
         }
     }

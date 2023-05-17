@@ -28,15 +28,16 @@ namespace DungeonCrawl.Tiles
                 {
                     map.UserControlledObject.Health += 5;
                     ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"Your health increased by 5!");    
+                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"Your health increased by 5!");
+                    map.UserControlledObject.inventoryKey.RemoveAt(0);
+                    map.RemoveMapObject(this);
                 }
-
-
-                map.RemoveMapObject(this);
-                map.UserControlledObject.PickUpLoot(this);
-                map.UserControlledObject.Damage += 5;
-                
-                
+                else
+                {
+                    ((RootScreen)(Game.Instance.Screen)).Console.Clear();
+                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"Get a key first!");
+                    return false;
+                }
                 return true;
             }
 
