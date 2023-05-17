@@ -60,6 +60,7 @@ public class RootScreen : ScreenObject
             handled = true;
         }
         
+        ((RootScreen)(Game.Instance.Screen)).HealthBar.Clear();
         ((RootScreen)(Game.Instance.Screen)).InventoryTreasure.Print(0, Game.Instance.ScreenCellsY - 4, $"Treasures: {_map.UserControlledObject.inventoryTreasure.Count()}");
         ((RootScreen)(Game.Instance.Screen)).InventoryKey.Print(0,Game.Instance.ScreenCellsY-3, $"Keys: {_map.UserControlledObject.inventoryKey.Count()}");
         ((RootScreen)(Game.Instance.Screen)).InventoryBow.Print(0,Game.Instance.ScreenCellsY-2, $"Bow: {_map.UserControlledObject.inventoryBow.Count()}");
