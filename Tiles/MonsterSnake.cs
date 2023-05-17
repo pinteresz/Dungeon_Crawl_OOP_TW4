@@ -28,7 +28,7 @@ public class MonsterSnake : GameObject
             // Is the player the one that touched us?
             if (source == map.UserControlledObject)
             {
-                ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"The snake took {map.UserControlledObject.Damage} damage!");
+                ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"The snake took {map.UserControlledObject.Damage} damage!");
                 Health -= map.UserControlledObject.Damage;
                 
 
@@ -36,7 +36,7 @@ public class MonsterSnake : GameObject
                 {
                     map.RemoveMapObject(this);
                     ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                    ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"You defeated the snake!");
+                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You defeated the snake!");
                     return true;
                 }
                 else

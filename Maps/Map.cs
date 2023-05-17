@@ -159,40 +159,34 @@ public class Map
     {
         var randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width - 5);
         var randomYPosition = Game.Instance.Random.Next(1, _mapSurface.Surface.Height - 1);
+        Point checkPosition = new Point(randomXPosition, 0);
+        
+        while (CheckIfValid(checkPosition))
+        {
+            randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width - 5);
+            randomYPosition = Game.Instance.Random.Next(1, _mapSurface.Surface.Height - 1);
+            checkPosition = new Point(randomXPosition, 0);
+            CheckIfValid(checkPosition);
+        }
 
         for (int i = 1; i < _mapSurface.Surface.Height-1; i++)
         {
             if(i != randomYPosition)
             {
                 Point randomPosition = new Point(randomXPosition, i);
-
-                // Check if any object is already positioned there, repeat the loop if found
-                bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition || obj.Position.X == randomPosition.X+1 || obj.Position.X == randomPosition.X-1);
-                if (foundObject) randomXPosition = Game.Instance.Random.Next(5, _mapSurface.Surface.Width-5);
-
                 // If the code reaches here, we've got a good position, create the game object.
                 GameObject wall = new Wall(randomPosition, _mapSurface);
                 _mapObjects.Add(wall);
-            }                    
-
+            }
         }
+    }
 
-        // Try 1000 times to get an empty map position
-       /* for (int i = 0; i < 1000; i++)
-        {
-            // Get a random position
-            Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
-                Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
-
-            // Check if any object is already positioned there, repeat the loop if found
-            bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
-            if (foundObject) continue;
-
-            // If the code reaches here, we've got a good position, create the game object.
-            GameObject wall = new Wall(randomPosition, _mapSurface);
-            _mapObjects.Add(wall);
-            break;
-        }*/
+    private bool CheckIfValid(Point position)
+    {
+        bool foundObject = _mapObjects.Any(obj => obj.Position.X == position.X || obj.Position.X == position.X+1 || obj.Position.X == position.X-1);
+        bool middle = position.X == _mapSurface.Surface.Width / 2;
+        
+        return foundObject || middle;
     }
 
     private void CreateKey()

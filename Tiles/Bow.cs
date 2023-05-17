@@ -30,7 +30,7 @@ namespace DungeonCrawl.Tiles
                 
                 
                 ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"You picked up a bow! Your attack increased by 5!");
+                ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You picked up a bow! Your attack increased by 5!");
                 return true;
             }
 

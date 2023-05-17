@@ -40,7 +40,6 @@ public class RootScreen : ScreenObject
     {
         bool handled = false;
         
-
         if (keyboard.IsKeyPressed(Keys.Up) && _map.UserControlledObject._uRDead == false)
         {
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Up, _map);

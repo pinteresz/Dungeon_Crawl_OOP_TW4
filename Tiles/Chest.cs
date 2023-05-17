@@ -28,7 +28,7 @@ namespace DungeonCrawl.Tiles
                 {
                     map.UserControlledObject.Health += 5;
                     ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-2,$"Your health increased by 5!");    
+                    ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"Your health increased by 5!");    
                 }
 
 
@@ -37,8 +37,6 @@ namespace DungeonCrawl.Tiles
                 map.UserControlledObject.Damage += 5;
                 
                 
-                ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"You picked up a bow! Your attack increased by 5!");
                 return true;
             }
 
