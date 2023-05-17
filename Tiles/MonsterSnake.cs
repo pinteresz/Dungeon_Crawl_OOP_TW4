@@ -47,6 +47,8 @@ public class MonsterSnake : GameObject
             
             }
 
+            //this.Move(new Point(1, 1), map);
+
             return false;
         }
     

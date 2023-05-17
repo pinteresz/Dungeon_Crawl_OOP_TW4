@@ -20,7 +20,7 @@ public class Player : GameObject
     public List<GameObject> inventoryTreasure;
     public List<GameObject> inventoryKey;
     public List<GameObject> inventoryBow;
-    public int Health { get; protected set; }
+    public int Health { get; set; }
     public int Damage { get; set; }
     public bool _uRDead = false;
     
