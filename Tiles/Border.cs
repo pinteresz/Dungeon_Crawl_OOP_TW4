@@ -16,7 +16,7 @@ public class Border : GameObject
     /// <param name="position"></param>
     /// <param name="hostingSurface"></param>
     public Border(Point position, IScreenSurface hostingSurface)
-        : base(new ColoredGlyph(Color.Transparent, Color.Transparent, ' '), position, hostingSurface)
+        : base(new ColoredGlyph(Color.White, Color.Transparent, '-'), position, hostingSurface)
     {
     }
 }
