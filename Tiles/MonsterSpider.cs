@@ -33,7 +33,8 @@ public class MonsterSpider : GameObject
         {
             ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"The spider took {map.UserControlledObject.Damage} damage!");
             Health -= map.UserControlledObject.Damage;
-
+            
+            
             if (Health <= 0)
             {
                 map.RemoveMapObject(this);
@@ -43,7 +44,8 @@ public class MonsterSpider : GameObject
             }
             else
             {
-                map.UserControlledObject.Health -= Damage;
+                //map.UserControlledObject.Health -= Damage;
+                map.UserControlledObject.GetDamage(Damage);
             }
             
         }

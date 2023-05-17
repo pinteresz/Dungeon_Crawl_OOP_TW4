@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Maps;
+using DungeonCrawl.Ui;
 using SadConsole;
 using SadRogue.Primitives;
 
@@ -19,8 +20,9 @@ public class Player : GameObject
     public List<GameObject> inventoryTreasure;
     public List<GameObject> inventoryKey;
     public List<GameObject> inventoryBow;
-    public int Health { get; set; }
+    public int Health { get; protected set; }
     public int Damage { get; set; }
+    public bool _uRDead = false;
     
 
     public Player(Point position, IScreenSurface hostingSurface)
@@ -49,6 +51,24 @@ public class Player : GameObject
         if (loot is Bow)
         {
             inventoryBow.Add(loot);
+        }
+    }
+
+    public void GetDamage(int hurt)
+    {
+        if (Health - hurt <= 0)
+        {
+            Health = 0;
+        }
+        else
+        {
+            Health -= hurt;
+        }
+        
+        if (Health <= 0)
+        {
+            _uRDead = true;
+            ((RootScreen)(Game.Instance.Screen)).GameOver.Print(40,12,"GAME OVER");
         }
     }
 }

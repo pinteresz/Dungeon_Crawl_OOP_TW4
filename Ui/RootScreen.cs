@@ -19,6 +19,8 @@ public class RootScreen : ScreenObject
     public Console InventoryKey;
     public Console InventoryBow;
     public Console HealthBar;
+    public Console GameOver;
+    
     
     /// <summary>
     /// Constructor.
@@ -37,24 +39,25 @@ public class RootScreen : ScreenObject
     public override bool ProcessKeyboard(Keyboard keyboard)
     {
         bool handled = false;
+        
 
-        if (keyboard.IsKeyPressed(Keys.Up))
+        if (keyboard.IsKeyPressed(Keys.Up) && _map.UserControlledObject._uRDead == false)
         {
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Up, _map);
             handled = true;
         }
-        else if (keyboard.IsKeyPressed(Keys.Down))
+        else if (keyboard.IsKeyPressed(Keys.Down) && _map.UserControlledObject._uRDead == false)
         {
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Down, _map);
             handled = true;
         }
 
-        if (keyboard.IsKeyPressed(Keys.Left))
+        if (keyboard.IsKeyPressed(Keys.Left) && _map.UserControlledObject._uRDead == false)
         {
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Left, _map);
             handled = true;
         }
-        else if (keyboard.IsKeyPressed(Keys.Right))
+        else if (keyboard.IsKeyPressed(Keys.Right) && _map.UserControlledObject._uRDead == false)
         {
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Right, _map);
             handled = true;

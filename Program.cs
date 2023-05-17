@@ -36,30 +36,39 @@ public static class Program
         Game.Instance.Screen = new RootScreen();
         Game.Instance.Screen.IsFocused = true;
         
-        
         var console = new Console(ViewPortWidth, ViewPortHeight);
         console.IsFocused = false;
         console.Cursor.IsVisible = false;
         
+        var console1 = new Console(ViewPortWidth, ViewPortHeight);
+        console1.IsFocused = false;
+        console1.Cursor.IsVisible = false;
+        
+        var console2 = new Console(ViewPortWidth, ViewPortHeight);
+        console1.IsFocused = false;
+        console1.Cursor.IsVisible = false;
+        
         ((RootScreen)(Game.Instance.Screen)).Console = console;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).Console);
-        
         
         // var console = new Console(ViewPortWidth, ViewPortHeight);
         // console.IsFocused = false;
         // console.Cursor.IsVisible = false;
         
-        ((RootScreen)(Game.Instance.Screen)).InventoryTreasure = console;
+        ((RootScreen)(Game.Instance.Screen)).InventoryTreasure = console1;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
         
-        ((RootScreen)(Game.Instance.Screen)).InventoryKey = console;
+        ((RootScreen)(Game.Instance.Screen)).InventoryKey = console1;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
         
-        ((RootScreen)(Game.Instance.Screen)).InventoryBow = console;
+        ((RootScreen)(Game.Instance.Screen)).InventoryBow = console1;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).InventoryTreasure);
         
-        ((RootScreen)(Game.Instance.Screen)).HealthBar = console;
+        ((RootScreen)(Game.Instance.Screen)).HealthBar = console1;
         Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).HealthBar);
+        
+        ((RootScreen)(Game.Instance.Screen)).GameOver = console2;
+        Game.Instance.Screen.Children.Add(((RootScreen)(Game.Instance.Screen)).GameOver);
         
         // This is needed because we replaced the initial screen object with our own.
         Game.Instance.DestroyDefaultStartingConsole();

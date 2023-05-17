@@ -26,10 +26,11 @@ namespace DungeonCrawl.Tiles
             {
                 map.RemoveMapObject(this);
                 map.UserControlledObject.PickUpLoot(this);
+                map.UserControlledObject.Damage += 5;
                 
-            
+                
                 ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-                ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"You picked up a bow!");
+                ((RootScreen)(Game.Instance.Screen)).Console.Print(50,Game.Instance.ScreenCellsY-2,$"You picked up a bow! Your attack increased by 5!");
                 return true;
             }
 
