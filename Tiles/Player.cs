@@ -19,6 +19,9 @@ public class Player : GameObject
     public List<GameObject> inventoryTreasure;
     public List<GameObject> inventoryKey;
     public List<GameObject> inventoryBow;
+    public int Health { get; set; }
+    public int Damage { get; set; }
+    
 
     public Player(Point position, IScreenSurface hostingSurface)
         : base(new ColoredGlyph(Color.Green, Color.Transparent, 2), position, hostingSurface)
@@ -26,6 +29,8 @@ public class Player : GameObject
         inventoryTreasure = new();
         inventoryKey = new();
         inventoryBow = new();
+        Health = 10;
+        Damage = 5;
     }
 
     public void PickUpLoot(GameObject loot)

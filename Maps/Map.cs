@@ -3,6 +3,7 @@ using SadConsole;
 using SadRogue.Primitives;
 using System.Collections.Generic;
 using System.Linq;
+using DungeonCrawl.Ui;
 using Console = System.Console;
 
 namespace DungeonCrawl.Maps;
@@ -48,7 +49,6 @@ public class Map
             CreateKey();
         }
 
-        
     }
 
     

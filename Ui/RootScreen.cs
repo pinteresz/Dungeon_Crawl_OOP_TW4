@@ -18,6 +18,7 @@ public class RootScreen : ScreenObject
     public Console InventoryTreasure;
     public Console InventoryKey;
     public Console InventoryBow;
+    public Console HealthBar;
     
     /// <summary>
     /// Constructor.
@@ -58,26 +59,13 @@ public class RootScreen : ScreenObject
             _map.UserControlledObject.Move(_map.UserControlledObject.Position + Direction.Right, _map);
             handled = true;
         }
-
-        if (keyboard.IsKeyPressed(Keys.B) || keyboard.IsKeyPressed(Keys.I))
-        { 
-            if (_map.UserControlledObject.inventoryTreasure.Any())
-            {
-                ((RootScreen)(Game.Instance.Screen)).InventoryTreasure.Print(0, Game.Instance.ScreenCellsY - 3, $"Treasures: {_map.UserControlledObject.inventoryTreasure.Count()}");
-            }
-
-            if (_map.UserControlledObject.inventoryKey.Any())
-            {
-                ((RootScreen)(Game.Instance.Screen)).InventoryKey.Print(0,Game.Instance.ScreenCellsY-2, $"Keys: {_map.UserControlledObject.inventoryKey.Count()}");
-            }
-
-            if (_map.UserControlledObject.inventoryBow.Any())
-            {
-                ((RootScreen)(Game.Instance.Screen)).InventoryBow.Print(0,Game.Instance.ScreenCellsY-1, $"Bow: {_map.UserControlledObject.inventoryBow.Count()}");
-            }
-        }
         
+        ((RootScreen)(Game.Instance.Screen)).InventoryTreasure.Print(0, Game.Instance.ScreenCellsY - 4, $"Treasures: {_map.UserControlledObject.inventoryTreasure.Count()}");
+        ((RootScreen)(Game.Instance.Screen)).InventoryKey.Print(0,Game.Instance.ScreenCellsY-3, $"Keys: {_map.UserControlledObject.inventoryKey.Count()}");
+        ((RootScreen)(Game.Instance.Screen)).InventoryBow.Print(0,Game.Instance.ScreenCellsY-2, $"Bow: {_map.UserControlledObject.inventoryBow.Count()}");
+        ((RootScreen)(Game.Instance.Screen)).HealthBar.Print(0,Game.Instance.ScreenCellsY-1, $"Player's health: {_map.UserControlledObject.Health}/10");
 
+        
         return handled;
     }
 }
