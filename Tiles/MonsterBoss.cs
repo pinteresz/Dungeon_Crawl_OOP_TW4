@@ -48,11 +48,13 @@ public class MonsterBoss : GameObject
 
             if (Health <= 0)
             {
+                
                 map.RemoveMapObject(this);
                 ((RootScreen)(Game.Instance.Screen)).GameOver.Clear();
                 ((RootScreen)(Game.Instance.Screen)).GameOver.Print(40,12,$"You defeated The Boss!");
                 map.UserControlledObject._uRDead = true;
                 return true;
+                
             }
             else
             {

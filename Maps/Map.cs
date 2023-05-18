@@ -18,7 +18,7 @@ public class Map
     public Player UserControlledObject { get; private set; }
     private List<GameObject> _mapObjects;
     private ScreenSurface _mapSurface;
-
+    
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -53,9 +53,7 @@ public class Map
 
     }
 
-    
-    
-    
+
     /// <summary>
     /// Try to find a map object at that position.
     /// </summary>

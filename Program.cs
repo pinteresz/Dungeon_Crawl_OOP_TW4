@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Tiles;
+﻿using DungeonCrawl.Maps;
+using DungeonCrawl.Tiles;
 using DungeonCrawl.Ui;
 using SadConsole;
 
@@ -26,6 +27,7 @@ public static class Program
         // Start the game.
         Game.Instance.Run();
         Game.Instance.Dispose();
+        
     }
 
     /// <summary>
