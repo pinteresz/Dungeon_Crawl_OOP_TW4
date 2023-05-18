@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DungeonCrawl.Maps;
 using DungeonCrawl.Ui;
@@ -36,7 +37,7 @@ public class Treasure : GameObject
             map.UserControlledObject.PickUpLoot(this);
             
             ((RootScreen)(Game.Instance.Screen)).Console.Clear();
-            ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You picked up a diamond!");
+            ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You picked up a treasure!");
             if (map.UserControlledObject.inventoryTreasure.Count == 5)
             {
                 map.SummonBoss();

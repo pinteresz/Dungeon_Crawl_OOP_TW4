@@ -22,6 +22,13 @@ public class MonsterBoss : GameObject
     {
         Health = 50;
         Damage = 4;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= Health; i++)
+        {
+            sb.Append((char)254);
+        }
+        ((RootScreen)(Game.Instance.Screen)).Console.Clear();
+        ((RootScreen)(Game.Instance.Screen)).Console.Print(0,0,$"The Boss {sb} {Health}/50");
     }
         
     protected override bool Touched(GameObject source, Map map)
@@ -44,6 +51,7 @@ public class MonsterBoss : GameObject
                 map.RemoveMapObject(this);
                 ((RootScreen)(Game.Instance.Screen)).GameOver.Clear();
                 ((RootScreen)(Game.Instance.Screen)).GameOver.Print(40,12,$"You defeated The Boss!");
+                map.UserControlledObject._uRDead = true;
                 return true;
             }
             else
