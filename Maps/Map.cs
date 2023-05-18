@@ -193,22 +193,43 @@ public class Map
     private void CreateKey()
     {
         // Try 1000 times to get an empty map position
-        for (int i = 0; i < 1000; i++)
+        Point randomPosition = new();
+        bool foundObject = true;
+        while (foundObject)
         {
             // Get a random position
-            Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
-                Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
+             randomPosition = new Point(Game.Instance.Random.Next(1, _mapSurface.Surface.Width-1),
+                Game.Instance.Random.Next(1, _mapSurface.Surface.Height-1));
 
             // Check if any object is already positioned there, repeat the loop if found
-            bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
-            if (foundObject) continue;
-
-            // If the code reaches here, we've got a good position, create the game object.
-            GameObject key = new Key(randomPosition, _mapSurface);
-            _mapObjects.Add(key);
-            break;
+            foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+            
         }
+        // If the code reaches here, we've got a good position, create the game object.
+        GameObject key = new Key(randomPosition, _mapSurface);
+        _mapObjects.Add(key);
     }
+    
+    
+    // private void CreateKey()
+    // {
+    //     // Try 1000 times to get an empty map position
+    //     for (int i = 0; i < 1000; i++)
+    //     {
+    //         // Get a random position
+    //         Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
+    //             Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
+    //
+    //         // Check if any object is already positioned there, repeat the loop if found
+    //         bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
+    //         if (foundObject) continue;
+    //
+    //         // If the code reaches here, we've got a good position, create the game object.
+    //         GameObject key = new Key(randomPosition, _mapSurface);
+    //         _mapObjects.Add(key);
+    //         break;
+    //     }
+    // }
 
     private void CreateBorder()
     {
@@ -278,8 +299,8 @@ public class Map
         for (int i = 0; i < 1000; i++)
         {
             // Get a random position
-            Point randomPosition = new Point(Game.Instance.Random.Next(0, _mapSurface.Surface.Width),
-                Game.Instance.Random.Next(0, _mapSurface.Surface.Height));
+            Point randomPosition = new Point(Game.Instance.Random.Next(1, _mapSurface.Surface.Width-1),
+                Game.Instance.Random.Next(1, _mapSurface.Surface.Height-1));
 
             // Check if any object is already positioned there, repeat the loop if found
             bool foundObject = _mapObjects.Any(obj => obj.Position == randomPosition);
