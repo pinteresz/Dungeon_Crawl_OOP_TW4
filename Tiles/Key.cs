@@ -32,7 +32,7 @@ namespace DungeonCrawl.Tiles
                 ((RootScreen)(Game.Instance.Screen)).Console.Print(20,Game.Instance.ScreenCellsY-5,$"You picked up a key!");
                 return true;
             }
-
+        
             return false;
         }
     }

@@ -66,6 +66,8 @@ public class RootScreen : ScreenObject
         ((RootScreen)(Game.Instance.Screen)).HealthBar.Clear();
         ((RootScreen)(Game.Instance.Screen)).InventoryTreasure.Print(0, Game.Instance.ScreenCellsY - 4, $"Treasures: {_map.UserControlledObject.inventoryTreasure.Count()}");
         ((RootScreen)(Game.Instance.Screen)).InventoryKey.Print(0,Game.Instance.ScreenCellsY-3, $"Keys: {_map.UserControlledObject.inventoryKey.Count()}");
+        //one inventory is sufficient if we use this:
+        //int asd = _map.UserControlledObject.inventoryKey.Count(x => x is Treasure);
         ((RootScreen)(Game.Instance.Screen)).InventoryBow.Print(0,Game.Instance.ScreenCellsY-2, $"Bow: {_map.UserControlledObject.inventoryBow.Count()}");
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= _map.UserControlledObject.Health; i++)
